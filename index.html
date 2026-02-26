@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
+        <title>Go8 City - Smart City Hack</title>
+        <script src="https://telegram.org/js/telegram-web-app.js"></script>
+        <style>
+            :root {
+                --tg-theme-bg-color: #ffffff;
+                --tg-theme-text-color: #000000;
+                --tg-theme-hint-color: #707579;
+                --tg-theme-button-color: #0088cc;
+                --tg-theme-button-text-color: #ffffff;
+                --tg-theme-secondary-bg-color: #f4f4f5;
+                --accent-gold: #ffb900;
+                --success-green: #34c759;
+            }
+            body {
+                font-family:
+                    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                    Helvetica, Arial, sans-serif;
+                background-color: var(--tg-theme-bg-color);
+                color: var(--tg-theme-text-color);
+                margin: 0;
+                padding: 20px;
+                text-align: center;
+                opacity: 0;
+                animation: fadeIn 0.5s ease-in forwards;
+            }
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+
+            .hero {
+                margin-top: 5px;
+            }
+            .logo {
+                width: 120px;
+                height: 120px;
+                border-radius: 23px;
+                background: linear-gradient(135deg, #0088cc, #00c6ff);
+                padding: 2px;
+                box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3);
+            }
+
+            h1 {
+                font-size: 26px;
+                margin: 12px 0 4px;
+                font-weight: 800;
+                letter-spacing: -0.5px;
+            }
+            .tagline {
+                font-size: 14px;
+                color: var(--tg-theme-button-color);
+                font-weight: 600;
+                margin-bottom: 20px;
+                text-transform: uppercase;
+            }
+
+            /* Питч */
+            .pitch-box {
+                background: var(--tg-theme-secondary-bg-color);
+                padding: 16px;
+                border-radius: 16px;
+                margin-bottom: 20px;
+                text-align: left;
+                border-left: 4px solid var(--tg-theme-button-color);
+            }
+            .pitch-text {
+                font-size: 14px;
+                line-height: 1.5;
+                color: var(--tg-theme-text-color);
+                margin: 0;
+            }
+
+            /* Возможности */
+            .section-title {
+                text-align: left;
+                font-size: 13px;
+                font-weight: 700;
+                color: var(--tg-theme-hint-color);
+                margin: 20px 0 10px 5px;
+                text-transform: uppercase;
+            }
+            .features-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 10px;
+                margin-bottom: 20px;
+            }
+            .feature-card {
+                padding: 14px;
+                background: rgba(0, 0, 0, 0.03);
+                border-radius: 14px;
+                text-align: left;
+                display: flex;
+                gap: 12px;
+                align-items: flex-start;
+            }
+            .feature-icon {
+                font-size: 20px;
+            }
+            .feature-content b {
+                display: block;
+                font-size: 15px;
+                margin-bottom: 2px;
+            }
+            .feature-content span {
+                font-size: 13px;
+                color: var(--tg-theme-hint-color);
+                line-height: 1.4;
+                display: block;
+            }
+
+            /* Кнопки */
+            .btn-stars {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                width: 100%;
+                padding: 16px;
+                margin-top: 25px;
+                background: linear-gradient(135deg, #ffb900, #ff8c00);
+                color: #fff;
+                border: none;
+                border-radius: 14px;
+                font-weight: 700;
+                font-size: 16px;
+                cursor: pointer;
+                box-shadow: 0 4px 12px rgba(255, 185, 0, 0.3);
+            }
+            .btn-outline {
+                display: block;
+                width: 100%;
+                padding: 15px;
+                margin-top: 12px;
+                background: transparent;
+                color: var(--tg-theme-button-color);
+                border: 1.5px solid var(--tg-theme-button-color);
+                border-radius: 14px;
+                font-weight: 600;
+                cursor: pointer;
+            }
+
+            .footer {
+                margin-top: 25px;
+                font-size: 11px;
+                color: var(--tg-theme-hint-color);
+                line-height: 1.4;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="hero">
+            <img src="go8logo.png" alt="Go8 Logo" class="logo" />
+            <h1>Go8 City</h1>
+            <div class="tagline" id="tagline">Smart City Hack</div>
+        </div>
+
+        <div class="pitch-box">
+            <p class="pitch-text" id="pitch-main">...</p>
+        </div>
+
+        <div class="section-title" id="sec-pillars">4 Столпа сервиса</div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🗺️</div>
+                <div class="feature-content">
+                    <b id="p1-t">...</b><span id="p1-d">...</span>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <div class="feature-content">
+                    <b id="p2-t">...</b><span id="p2-d">...</span>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🤝</div>
+                <div class="feature-content">
+                    <b id="p3-t">...</b><span id="p3-d">...</span>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🚀</div>
+                <div class="feature-content">
+                    <b id="p4-t">...</b><span id="p4-d">...</span>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn-stars" onclick="supportProject()">
+            <span id="btn-support">...</span>
+            <svg
+                style="width: 18px; height: 18px"
+                viewBox="0 0 24 24"
+                fill="none"
+            >
+                <path
+                    d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                    fill="white"
+                />
+            </svg>
+        </button>
+
+        <button class="btn-outline" onclick="openApp()" id="btn-explore">
+            ...
+        </button>
+
+        <div class="footer">
+            <div id="status-loc">...</div>
+            <div style="margin-top: 5px; opacity: 0.6" id="final-phrase">
+                ...
+            </div>
+        </div>
+
+        <script>
+            const tg = window.Telegram.WebApp;
+            tg.expand();
+
+            const i18n = {
+                ru: {
+                    pitch: "Твой проводник в мире умных путешествий. Взламывай город, находи секретные локации и получай оплату за активность. Go8 City — это живая сеть данных, создаваемая пользователями в реальном времени. Uber для городской информации на стероидах.",
+                    tagline: "Твой цифровой ключ к городу",
+                    sec_pillars: "Возможности Go8 City",
+                    p1_t: "Smart Map & Hacks",
+                    p1_d: "100% актуальность: цены, секретные входы и скрытые пляжи.",
+                    p2_t: "Move-to-Earn",
+                    p2_d: "Зарабатывай $TON за верификацию локаций и прогулки по городу.",
+                    p3_t: "Social Matchmaking",
+                    p3_d: "Находи компанию для ужина или квеста по интересам.",
+                    p4_t: "B2B Ads Engine",
+                    p4_d: "Бизнес платит за реальные чекины, а не за пустые показы.",
+                    support: "Поддержать проект (50 Stars)",
+                    explore: "Исследовать Нячанг",
+                    loc: "Локация: Нячанг, Вьетнам 🇻🇳",
+                    final: "Go8 City: Делай город лучше — путешествуй проще.",
+                },
+                en: {
+                    pitch: "Your guide to smart travel. Hack the city, find hidden gems, and get paid for being active. Go8 City is a live data network powered by real users in real-time. Uber for urban information on steroids.",
+                    tagline: "Your Digital Key to the City",
+                    sec_pillars: "Go8 City Pillars",
+                    p1_t: "Smart Map & Hacks",
+                    p1_d: "100% fresh data: prices, hidden gems, and secret spots.",
+                    p2_t: "Move-to-Earn",
+                    p2_d: "Earn $TON for verifying locations and city scouting.",
+                    p3_t: "Social Matchmaking",
+                    p3_d: "Connect with like-minded people for dinner or quests.",
+                    p4_t: "B2B Ads Engine",
+                    p4_d: "Businesses pay for real check-ins, not just impressions.",
+                    support: "Support Project (50 Stars)",
+                    explore: "Explore Nha Trang",
+                    loc: "Location: Nha Trang, Vietnam 🇻🇳",
+                    final: "Go8 City: Make the city better — travel easier.",
+                },
+                vi: {
+                    pitch: "Người dẫn đường cho những chuyến du lịch thông minh. Khám phá mọi ngóc ngách, tìm kiếm kho báu bí mật và nhận thưởng cho sự năng động của bạn. Go8 City là mạng dữ liệu trực tiếp do người dùng tạo ra. Uber cho thông tin đô thị thế hệ mới.",
+                    tagline: "Chìa khóa kỹ thuật số của bạn",
+                    sec_pillars: "4 Trụ cột dịch vụ",
+                    p1_t: "Smart Map & Hacks",
+                    p1_d: "Dữ liệu chính xác 100%: giá cả, địa điểm bí mật.",
+                    p2_t: "Move-to-Earn",
+                    p2_d: "Kiếm $TON khi xác minh vị trí và đi dạo trong thành phố.",
+                    p3_t: "Social Matchmaking",
+                    p3_d: "Tìm bạn đồng hành đi ăn tối hoặc tham gia nhiệm vụ.",
+                    p4_t: "B2B Ads Engine",
+                    p4_d: "Doanh nghiệp trả tiền cho lượt ghé thăm thực tế.",
+                    support: "Hỗ trợ dự án (50 Stars)",
+                    explore: "Khám phá Nha Trang",
+                    loc: "Vị trí: Nha Trang, Việt Nam 🇻🇳",
+                    final: "Go8 City: Giúp thành phố tốt hơn — du lịch dễ dàng hơn.",
+                },
+            };
+
+            let lang = tg.initDataUnsafe?.user?.language_code || "en";
+            if (lang.startsWith("ru")) lang = "ru";
+            else if (lang.startsWith("vi")) lang = "vi";
+            else lang = "en";
+
+            const c = i18n[lang];
+
+            document.getElementById("pitch-main").innerText = c.pitch;
+            document.getElementById("tagline").innerText = c.tagline;
+            document.getElementById("sec-pillars").innerText = c.sec_pillars;
+            document.getElementById("p1-t").innerText = c.p1_t;
+            document.getElementById("p1-d").innerText = c.p1_d;
+            document.getElementById("p2-t").innerText = c.p2_t;
+            document.getElementById("p2-d").innerText = c.p2_d;
+            document.getElementById("p3-t").innerText = c.p3_t;
+            document.getElementById("p3-d").innerText = c.p3_d;
+            document.getElementById("p4-t").innerText = c.p4_t;
+            document.getElementById("p4-d").innerText = c.p4_d;
+            document.getElementById("btn-support").innerText = c.support;
+            document.getElementById("btn-explore").innerText = c.explore;
+            document.getElementById("status-loc").innerText = c.loc;
+            document.getElementById("final-phrase").innerText = c.final;
+
+            tg.MainButton.setText(c.explore.toUpperCase())
+                .show()
+                .onClick(openApp);
+
+            function supportProject() {
+                tg.HapticFeedback.impactOccurred("heavy");
+                tg.sendData(
+                    JSON.stringify({ action: "donate_stars", amount: 50 }),
+                );
+                tg.close();
+            }
+
+            function openApp() {
+                tg.HapticFeedback.impactOccurred("medium");
+                tg.sendData(JSON.stringify({ action: "open_map" }));
+                tg.close();
+            }
+        </script>
+    </body>
+</html>
